@@ -3906,7 +3906,7 @@ const data = [
 // you'll often use just a few of them.
 const MyResponsiveCalendar = () => {
     return (
-        <div style={{ width: 'auto', height: '300px', margin: '0 auto' }}>
+        <div style={{ width: '30vw', height: '300px', margin: '0 auto' }}>
             <ResponsiveCalendar
                 data={data}
                 from="2015-03-01"

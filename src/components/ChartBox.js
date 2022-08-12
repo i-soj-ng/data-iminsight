@@ -3,10 +3,10 @@ import { MyResponsiveCalendar, ReBarChart, ReChart } from "./charts";
 import styled from "styled-components";
 
 const charts = [
-    // {
-    //     title: '캘린더',
-    //     chart: <MyResponsiveCalendar/>
-    // },
+    {
+        title: '캘린더',
+        chart: <MyResponsiveCalendar/>
+    },
     {
         title: '방문자 통계',
         chart: <ReChart/>
@@ -23,8 +23,8 @@ const Box = styled.div`
   box-shadow: 0 4px 14px -4px #D1D1D1;
   padding: 30px;
   margin: 20px;
+  width: 30%;
   height: 380px;
-  //flex-basis: 48%;
 `
 
 export function ChartBox() {

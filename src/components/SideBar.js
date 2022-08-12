@@ -35,6 +35,18 @@ const IconBox = styled.div`
   color: #666666;
 `
 
+function SideBarComponent() {
+    return (
+        <Box>
+            <div style={{ marginBottom: '100px', textAlign: 'center' }}>
+                <LogoImg src={Logo}/>
+                <LogoText>Data Factory</LogoText>
+            </div>
+            <MenuItem/>
+        </Box>
+    );
+}
+
 export function SideBar() {
     const isHideSideBar = useResponsive();
     const [openSideBar, setOpenSideBar] = useState(false);
@@ -43,6 +55,16 @@ export function SideBar() {
         setOpenSideBar(true);
         console.log(openSideBar);
     }
+
+    // if (isHideSideBar) {
+    //     return (
+    //         <IconBox onClick={IconClicked}>
+    //             <AiOutlineDoubleRight style={{ width: '28px', height: '28px' }}/>
+    //         </IconBox>
+    //     );
+    // } else {
+    //     SideBarComponent;
+    // }
 
     return (
         isHideSideBar
