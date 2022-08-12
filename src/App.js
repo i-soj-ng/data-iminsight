@@ -1,9 +1,9 @@
 import { SideBar } from './components/SideBar';
 import styled from "styled-components";
-import { Main } from "./pages";
+import { Churn, Report } from "./pages";
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 
-const Center = styled.div`
+const Body = styled.div`
   display: flex;
   min-height: 100vh;
   background-color: #F2F2F2;
@@ -13,12 +13,13 @@ const Center = styled.div`
 function App() {
   return (
       <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <Center>
-          <SideBar/>
-          <Routes>
-            <Route path="/" element={<Main/>}/>
-          </Routes>
-        </Center>
+          <Body>
+              <SideBar/>
+              <Routes>
+                  <Route path="/" element={<Churn/>}/>
+                  <Route path="/report" element={<Report/>}/>
+              </Routes>
+          </Body>
       </BrowserRouter>
   );
 }

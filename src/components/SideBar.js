@@ -7,7 +7,8 @@ import { AiOutlineDoubleRight } from "react-icons/ai";
 
 const Box = styled.div`
   width: 260px;
-  flex: none;
+  height: 100%;
+  position: fixed;
   box-shadow: 0 4px 14px -4px #D1D1D1;
   background-color: #FFFFFF;
   text-align: center;

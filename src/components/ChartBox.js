@@ -4,10 +4,6 @@ import styled from "styled-components";
 
 const charts = [
     {
-        title: '캘린더',
-        chart: <MyResponsiveCalendar/>
-    },
-    {
         title: '방문자 통계',
         chart: <ReChart/>
     },
