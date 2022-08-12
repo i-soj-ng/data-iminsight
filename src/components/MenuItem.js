@@ -41,20 +41,18 @@ export function MenuItem() {
     }
 
     return (
-      <div>
-          { menuData.map((item, idx) =>
-              <Link to={item.path}>
-                  <Menu
-                      key={idx}
-                      value={item.path}
-                      onClick={menuClicked}
-                      isActive={item.path === currentPath}
-                  >
-                      { item.icon }
-                      <span style={{ margin: '16px 0 16px 0'}}>{ item.title }</span>
-                  </Menu>
-              </Link>
-          )}
-      </div>
+        menuData.map((item, idx) =>
+            <Link to={item.path}>
+                <Menu
+                    key={idx}
+                    value={item.path}
+                    onClick={menuClicked}
+                    isActive={item.path === currentPath}
+                >
+                    { item.icon }
+                    <span style={{ margin: '16px 0 16px 0'}}>{ item.title }</span>
+                </Menu>
+            </Link>
+        )
     );
 }
