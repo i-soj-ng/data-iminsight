@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { AiFillSignal, AiFillFrown, AiOutlineTeam } from "react-icons/ai";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
@@ -29,7 +29,7 @@ const Menu = styled.button`
   
   &:hover {
     background-color: #E8F1FE;
-    color: #356BFF;
+    color: #1a6dff;
   }
 `
 

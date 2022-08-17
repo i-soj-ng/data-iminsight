@@ -7,7 +7,6 @@ const Box = styled.div`
   width: 100%;
   height: 100vh;
   justify-content: center;
-  padding-left: 260px;
 `
 
 export default function Churn() {
