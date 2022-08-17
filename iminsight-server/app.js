@@ -1,18 +1,20 @@
 const express = require('express');
 const app = express();
 
-const PORT = 8080;
+require("dotenv").config();
+
+const PORT = 8000;
 
 const AWS = require('aws-sdk');
 const Queue = require('async.queue');
 const _ = require('lodash');
 
-const ATHENA_DB = 'default';
-const ATHENA_OUTPUT_LOCATION = 's3://imweb-test-athena-result-apnortheast2-datalake'
+const ATHENA_DB = process.env.DB;
+const ATHENA_OUTPUT_LOCATION = process.env.LOCATION
 const RESULT_SIZE = 1000
 const POLL_INTERVAL = 1000
 
-let client = new AWS.Athena({region: 'ap-northeast-2'});
+let client = new AWS.Athena({region: process.env.REGION});
 
 const sql = "select *\n" +
     "  from \"imweb-s3-real-stage-layer-data-catalog\".site_member_join_count_by_day \n" +

@@ -7,7 +7,14 @@ $ brew install node
 $ node --version
 
 $ git clone https://github.com/imwebme/data-iminsight.git
-$ cd data-iminsight
+
+# 대시보드 실행
+$ cd data-iminsight/iminsight-dashboard
 $ npm install
 $ npm run nodemon
+
+# 서버 실행
+$ cd data-iminsight/iminsight-server
+$ npm install
+$ node app.js
 ```
