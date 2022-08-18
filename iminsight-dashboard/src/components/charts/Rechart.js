@@ -13,16 +13,7 @@ import {
 import searchApi from "../../apis/api";
 import axios from "axios";
 
-const data = searchApi();
-
-// const getData = () => {
-//     const dataArray = searchApi();
-//     const data = dataArray
-//
-//     return (
-//       xAxis: data.mm,
-//     );
-// }
+// const data = searchApi();
 
 export default function Rechart() {
     const [chartData, setChartData] = useState([]);
@@ -53,21 +44,20 @@ export default function Rechart() {
                     top: 5,
                     right: 30,
                     left: 20,
-                    bottom: 40
+                    bottom: 50
                 }}
             >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="mm" />
-                <YAxis />
+                <YAxis dataKey="cnt"/>
                 <Tooltip />
                 <Legend />
                 <Line
                     type="monotone"
-                    dataKey="cnt"
+                    dataKey="pv"
                     stroke="#8884d8"
                     activeDot={{ r: 8 }}
                 />
-                <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
             </LineChart>
         </ResponsiveContainer>
     );

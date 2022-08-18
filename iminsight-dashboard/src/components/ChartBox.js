@@ -1,10 +1,10 @@
 import React from 'react';
-import { MyResponsiveCalendar, ReBarChart, ReChart } from "./charts";
+import { ReBarChart, ReChart } from "./charts";
 import styled from "styled-components";
 
 const charts = [
     {
-        title: '방문자 통계',
+        title: '사이트 신규 회원 수',
         chart: <ReChart/>
     },
     {
@@ -17,8 +17,8 @@ const Box = styled.div`
   background-color: #FFFFFF;
   border-radius: 10px;
   box-shadow: 0 4px 14px -4px #D1D1D1;
-  padding: 30px;
-  margin: 20px;
+  padding: 15px 30px 30px 30px;
+  margin: 30px 30px 0 0;
   width: 30%;
   height: 380px;
 `
