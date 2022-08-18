@@ -15,7 +15,6 @@
     "react-icons": "^4.4.0",
     "react-responsive": "^9.0.0-beta.10",
     "react-router-dom": "^6.3.0",
-    "react-scripts": "5.0.1",
     "recharts": "^2.1.13",
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4"
@@ -46,7 +45,8 @@
     ]
   },
   "devDependencies": {
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.19",
+    "react-scripts": "5.0.1"
   },
   "proxy": "http://localhost:8080"
 }
