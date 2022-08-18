@@ -18,13 +18,13 @@ const Contents = styled.div`
 
 function App() {
     const isHideSideBar = useResponsive();
-    console.log(isHideSideBar);
+    console.log("sidebar:", isHideSideBar);
 
     return (
         <BrowserRouter basename={process.env.PUBLIC_URL}>
             <Body>
                 <SideBar/>
-                <Contents>
+                <Contents isHideSideBar={isHideSideBar}>
                     <Routes>
                         <Route path="/" element={<Churn/>}/>
                         <Route path="/report" element={<Report/>}/>

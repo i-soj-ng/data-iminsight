@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 const Box = styled.div`
   width: 100%;
-  padding: 60px 10px 30px 50px;
+  padding: 40px 10px 30px 50px;
 `
 
 export default function Report() {

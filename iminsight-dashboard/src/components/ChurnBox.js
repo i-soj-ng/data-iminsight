@@ -16,7 +16,7 @@ const ItemBox = styled.div`
   border-radius: 10px;
   box-shadow: 0 4px 14px -4px #D1D1D1;
   padding: 30px;
-  margin: 25px;
+  margin: 40px 25px 25px 25px;
   width: 40%;
   height: 100%;
 `

@@ -19,8 +19,9 @@ const Box = styled.div`
   box-shadow: 0 4px 14px -4px #D1D1D1;
   padding: 15px 30px 30px 30px;
   margin: 30px 30px 0 0;
-  width: 30%;
-  height: 380px;
+  min-width: 380px;
+  width: 35%;
+  height: 450px;
 `
 
 export function ChartBox() {
