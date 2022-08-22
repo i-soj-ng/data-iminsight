@@ -48,7 +48,7 @@ const data = [
     }
 ];
 
-export default function ReBarChart() {
+export default function ReBarChart(props) {
     return (
         <ResponsiveContainer width="100%" height="100%">
             <BarChart

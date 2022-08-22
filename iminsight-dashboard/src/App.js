@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Churn, Report } from "./pages";
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import { useResponsive } from "./hooks/useResponsive";
+import { SiteDataApi } from "./apis/SiteDataApi";
 
 const Body = styled.div`
   display: flex;
@@ -18,7 +19,7 @@ const Contents = styled.div`
 
 function App() {
     const isHideSideBar = useResponsive();
-    console.log("sidebar:", isHideSideBar);
+    // SiteDataApi();
 
     return (
         <BrowserRouter basename={process.env.PUBLIC_URL}>

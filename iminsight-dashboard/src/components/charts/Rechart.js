@@ -10,19 +10,35 @@ import {
     ResponsiveContainer
 } from "recharts";
 
-import searchApi from "../../apis/api";
+import searchApi from "../../apis/SiteDataApi";
 import axios from "axios";
 
 // const data = searchApi();
 
-export default function Rechart() {
+export default function Rechart(props) {
     const [chartData, setChartData] = useState([]);
+    const [filteredData, setFilteredData] = useState([]);
+    console.log(props.year);
+
+    const dataFiltering = () => {
+        const dataTemp = chartData.map((data) => {
+            if (data.yyyy === props.year) {
+                return {
+                    yyyy: data.yyyy,
+                    mm: data.mm,
+                    cnt: data.cnt,
+                }
+            }
+        });
+        setFilteredData([{}, ...dataTemp, {}]);
+    }
 
     useEffect(() => {
         axios.get("/get")
             .then(function (response) {
                 const dataTemp = response.data.map((data) => {
                     return {
+                        yyyy: data.yyyy,
                         mm: data.mm,
                         cnt: data.cnt,
                     }
@@ -31,19 +47,21 @@ export default function Rechart() {
             })
             .catch(function (error) {
                 console.log(error);
-            })
-    });
+            });
+
+        dataFiltering();
+    }, [props.year]);
 
     return (
         <ResponsiveContainer width="100%" height="100%">
             <LineChart
                 width={500}
                 height={300}
-                data={chartData}
+                data={filteredData}
                 margin={{
                     top: 5,
                     right: 30,
-                    left: 20,
+                    left: 10,
                     bottom: 50
                 }}
             >
@@ -54,7 +72,7 @@ export default function Rechart() {
                 <Legend />
                 <Line
                     type="monotone"
-                    dataKey="pv"
+                    dataKey="cnt"
                     stroke="#8884d8"
                     activeDot={{ r: 8 }}
                 />

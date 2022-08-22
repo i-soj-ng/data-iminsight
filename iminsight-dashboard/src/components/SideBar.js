@@ -31,22 +31,20 @@ const IconBox = styled.div`
   left: 0;
   top: 0;
   height: 28px;
-  margin-top: 16px;
-  margin-left: 32px;
+  margin-top: 12px;
+  margin-left: 14px;
   color: #666666;
 `
 
-function SideBarComponent() {
-    return (
-        <Box>
-            <div style={{ marginBottom: '100px', textAlign: 'center' }}>
-                <LogoImg src={Logo}/>
-                <LogoText>Data Factory</LogoText>
-            </div>
-            <MenuItem/>
-        </Box>
-    );
-}
+const DarkBackground = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+`
 
 export function SideBar() {
     const isHideSideBar = useResponsive();
@@ -57,22 +55,30 @@ export function SideBar() {
         console.log(openSideBar);
     }
 
-    // if (isHideSideBar) {
-    //     return (
-    //         <IconBox onClick={IconClicked}>
-    //             <AiOutlineDoubleRight style={{ width: '28px', height: '28px' }}/>
-    //         </IconBox>
-    //     );
-    // } else {
-    //     SideBarComponent;
-    // }
+    useEffect(() => {
+        if (isHideSideBar) {
+            setOpenSideBar(false);
+        }
+    }, [isHideSideBar])
 
     return (
         isHideSideBar
         ?
-            <IconBox onClick={IconClicked}>
-                <AiOutlineDoubleRight style={{ width: '28px', height: '28px' }}/>
-            </IconBox>
+            openSideBar
+            ?
+                <DarkBackground onClick={() => setOpenSideBar(false)}>
+                    <Box>
+                        <div style={{ marginBottom: '100px', textAlign: 'center' }}>
+                            <LogoImg src={Logo}/>
+                            <LogoText>Data Factory</LogoText>
+                        </div>
+                        <MenuItem/>
+                    </Box>
+                </DarkBackground>
+            :
+                <IconBox onClick={IconClicked}>
+                    <AiOutlineDoubleRight style={{ width: '26px', height: '26px' }}/>
+                </IconBox>
         :
             <Box>
                 <div style={{ marginBottom: '100px', textAlign: 'center' }}>

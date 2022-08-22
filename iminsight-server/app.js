@@ -16,16 +16,26 @@ const POLL_INTERVAL = 1000
 
 let client = new AWS.Athena({region: process.env.REGION});
 
-const sql = "select *\n" +
-    "  from \"imweb-s3-real-stage-layer-data-catalog\".site_member_join_count_by_day \n" +
-    " where 1=1\n" +
-    "   and site_code = 'S201704275901f89d84e04'\n" +
-    "  order by yyyy, mm, dd"
+const sql = "select \'S201706275951b78686e29\' as site_code, dd.yyyy, dd.mm, coalesce(sd.cnt, 0) as cnt\n" +
+"from \"imweb-s3-real-stage-layer-data-catalog\".date_dimension as dd\n" +
+"left join (select site_code, yyyy, mm, sum(cnt) as cnt from \"imweb-s3-real-stage-layer-data-catalog\".site_member_join_count_by_day where site_code = \'S201706275951b78686e29\' group by site_code, yyyy, mm) as sd on  dd.yyyy = sd.yyyy and dd.mm = sd.mm\n" +
+"where 1=1\n" +
+   "and dd.yyyymm >= \'2017-05\'\n" +
+   "and dd.yyyymm < \'2018-05\'\n" +
+"order by yyyymm"
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/get", (req, res) => {
+app.get("/get-site-data", (req, res) => {
+    makeQuery(sql)
+        .then((data) => {
+            res.send(data);
+        })
+        .catch((e) => { res.send(e) })
+});
+
+app.get("/get-churn-data", (req, res) => {
     makeQuery(sql)
         .then((data) => {
             res.send(data);

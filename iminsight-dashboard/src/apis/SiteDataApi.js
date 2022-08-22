@@ -1,11 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 
-const searchApi = async () => {
-    console.log("get data...")
+export function SiteDataApi() {
+    console.log("get site data...");
 
-    await axios
-        .get("/get")
+    axios
+        .get("/get-site-data")
         .then(function (response) {
             console.log(response.data);
             return(response.data);
@@ -14,5 +14,3 @@ const searchApi = async () => {
             console.log(error);
         })
 }
-
-export default searchApi;
