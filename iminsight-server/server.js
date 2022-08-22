@@ -7,17 +7,17 @@ const siteOrderProdSql = require('./sql-queries/siteOrderProdSql');
 const makeQuery = require('./athena');
 
 const express = require('express');
-const app = express();
+const server = express();
 
 const PORT = 8000;
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+server.use(express.json());
+server.use(express.urlencoded({ extended: true }));
 
-app.listen(PORT, () => console.log("Running..."));
+server.listen(PORT, () => console.log("Running..."));
 
 // 상위 이탈률 사이트 리스트 send
-app.get("/get-churn-data", (req, res) => {
+server.get("/get-churn-data", (req, res) => {
     const churnDataQuery = churnDataSql();
 
     makeQuery(churnDataQuery)
@@ -28,7 +28,7 @@ app.get("/get-churn-data", (req, res) => {
 });
 
 // 사이트 신규 회원 수 데이터 send
-app.get("/get-site-new-member-data", (req, res) => {
+server.get("/get-site-new-member-data", (req, res) => {
     console.log(req.query.site_code);
     const sql = siteNewMemberSql(req.query.site_code);
 
@@ -40,7 +40,7 @@ app.get("/get-site-new-member-data", (req, res) => {
 });
 
 // 사이트 GMV 데이터 send
-app.get("/get-site-gmv-data", (req, res) => {
+server.get("/get-site-gmv-data", (req, res) => {
     console.log(req.query.site_code);
     const sql = siteGmvSql(req.query.site_code);
 
@@ -52,7 +52,7 @@ app.get("/get-site-gmv-data", (req, res) => {
 });
 
 // 사이트 Page View 데이터 send
-app.get("/get-site-page-view-data", (req, res) => {
+server.get("/get-site-page-view-data", (req, res) => {
     console.log(req.query.site_code);
     const sql = sitePageViewSql(req.query.site_code);
 
@@ -64,7 +64,7 @@ app.get("/get-site-page-view-data", (req, res) => {
 });
 
 // 사이트 상품 주문 수 데이터 send
-app.get("/get-site-order-prod-data", (req, res) => {
+server.get("/get-site-order-prod-data", (req, res) => {
     console.log(req.query.site_code);
     const sql = siteOrderProdSql(req.query.site_code);
 

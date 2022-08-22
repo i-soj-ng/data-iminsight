@@ -16,5 +16,5 @@ $ npm run nodemon
 # 서버 실행
 $ cd data-iminsight/iminsight-server
 $ npm install
-$ node App.js
+$ node server.js
 ```
