@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
-import {AiFillSignal, AiOutlineTeam} from "react-icons/ai";
+
+import { ChurnItem } from "./ChurnItem";
 
 const ItemBox = styled.div`
   background-color: #FFFFFF;
@@ -16,6 +17,7 @@ export function ChurnBox() {
     return (
         <ItemBox>
             <h2>상위 이탈 위험 고객</h2>
+            <ChurnItem/>
         </ItemBox>
     );
 }

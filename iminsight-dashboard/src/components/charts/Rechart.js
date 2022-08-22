@@ -20,21 +20,25 @@ export default function Rechart(props) {
     const [filteredData, setFilteredData] = useState([]);
     console.log(props.year);
 
-    const dataFiltering = () => {
-        const dataTemp = chartData.map((data) => {
-            if (data.yyyy === props.year) {
-                return {
-                    yyyy: data.yyyy,
-                    mm: data.mm,
-                    cnt: data.cnt,
-                }
-            }
-        });
-        setFilteredData([{}, ...dataTemp, {}]);
-    }
+    // const dataFiltering = () => {
+    //     const dataTemp = chartData.map((data) => {
+    //         if (data.yyyy === props.year) {
+    //             return {
+    //                 yyyy: data.yyyy,
+    //                 mm: data.mm,
+    //                 cnt: data.cnt,
+    //             }
+    //         }
+    //     });
+    //     setFilteredData([{}, ...dataTemp, {}]);
+    // }
 
     useEffect(() => {
-        axios.get("/get")
+        axios.get("/get-site-data", {
+            params: {
+                site_code: 'S201706275951b78686e29'
+            }
+        })
             .then(function (response) {
                 const dataTemp = response.data.map((data) => {
                     return {
@@ -49,8 +53,8 @@ export default function Rechart(props) {
                 console.log(error);
             });
 
-        dataFiltering();
-    }, [props.year]);
+        // dataFiltering();
+    }, []);
 
     return (
         <ResponsiveContainer width="100%" height="100%">

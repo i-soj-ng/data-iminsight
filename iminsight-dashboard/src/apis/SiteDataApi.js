@@ -5,7 +5,11 @@ export function SiteDataApi() {
     console.log("get site data...");
 
     axios
-        .get("/get-site-data")
+        .get("/get-site-data", {
+            params: {
+                site_code: 'S201706275951b78686e29'
+            }
+        })
         .then(function (response) {
             console.log(response.data);
             return(response.data);

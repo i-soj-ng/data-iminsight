@@ -48,5 +48,5 @@
     "nodemon": "^2.0.19",
     "react-scripts": "5.0.1"
   },
-  "proxy": "http://localhost:8080"
+  "proxy": "http://localhost:8000"
 }
