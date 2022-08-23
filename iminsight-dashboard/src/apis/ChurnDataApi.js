@@ -10,7 +10,7 @@ export async function ChurnDataApi() {
     console.log("get churn data...");
 
     await axios
-        .get("/get-churn-data")
+        .get("/api/get-churn-data")
         .then(function (response) {
             console.log(response.data);
             setChurnData(response.data);

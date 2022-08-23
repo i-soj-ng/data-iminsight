@@ -19,7 +19,7 @@ export default function PageViewChart() {
     const { siteCode } = context;
 
     const getData = async () => {
-        const response = await axios.get("/get-site-page-view-data", {
+        const response = await axios.get("/api/get-site-page-view-data", {
             params: {
                 site_code: siteCode,
             }

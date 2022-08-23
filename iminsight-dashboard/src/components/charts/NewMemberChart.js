@@ -19,7 +19,7 @@ export default function NewMemberChart() {
     const { siteCode } = context;
 
     const getData = async () => {
-        const response = await axios.get("/get-site-new-member-data", {
+        const response = await axios.get("/api/get-site-new-member-data", {
             params: {
                 site_code: siteCode,
             }
