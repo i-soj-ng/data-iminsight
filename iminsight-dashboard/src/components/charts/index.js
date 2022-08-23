@@ -1,3 +1,4 @@
-export { default as MyResponsiveCalendar } from './MyResponsiveCalendar';
-export { default as ReBarChart } from './ReBarChart';
-export { default as ReChart } from './Rechart';
+export { default as GmvChart } from './GmvChart';
+export { default as ProdOrderChart } from './ProdOrderChart';
+export { default as NewMemberChart } from './NewMemberChart';
+export { default as PageViewChart } from './PageViewChart';

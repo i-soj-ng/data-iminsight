@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import {
     LineChart,
     Line,
@@ -9,34 +9,22 @@ import {
     Legend,
     ResponsiveContainer
 } from "recharts";
-
-import searchApi from "../../apis/SiteDataApi";
 import axios from "axios";
 
-// const data = searchApi();
-
-export default function Rechart(props) {
+export default function GmvChart() {
     const [chartData, setChartData] = useState([]);
 
-    useEffect(() => {
-        axios.get("/get-site-data", {
+    const getData = async () => {
+        const response = await axios.get("/get-site-gmv-data", {
             params: {
-                site_code: 'S201706275951b78686e29'
+                site_code: 'S201807025b39df3757642',
             }
-        })
-            .then(function (response) {
-                const dataTemp = response.data.map((data) => {
-                    return {
-                        yyyy: data.yyyy,
-                        mm: data.mm,
-                        cnt: data.cnt,
-                    }
-                })
-                setChartData([{}, ...dataTemp, {}]);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        });
+        setChartData(response.data);
+    }
+
+    useEffect(() => {
+        getData();
     }, []);
 
     return (
@@ -48,18 +36,18 @@ export default function Rechart(props) {
                 margin={{
                     top: 5,
                     right: 30,
-                    left: 10,
+                    left: 20,
                     bottom: 50
                 }}
             >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="mm" />
-                <YAxis dataKey="cnt"/>
+                <YAxis />
                 <Tooltip />
                 <Legend />
                 <Line
                     type="monotone"
-                    dataKey="cnt"
+                    dataKey="monthly_gmv"
                     stroke="#8884d8"
                     activeDot={{ r: 8 }}
                 />

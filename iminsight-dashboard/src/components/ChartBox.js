@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
 
-import { ReBarChart, ReChart } from "./charts";
-import { Filter } from "../components/Filter";
+import { GmvChart, ProdOrderChart, NewMemberChart, PageViewChart } from "./charts";
 
 const Box = styled.div`
   background-color: #FFFFFF;
@@ -10,8 +9,8 @@ const Box = styled.div`
   box-shadow: 0 4px 14px -4px #D1D1D1;
   padding: 30px 30px 30px 30px;
   margin: 30px 30px 0 0;
-  min-width: 380px;
-  width: 35%;
+  min-width: 400px;
+  width: 42%;
   height: 450px;
 `
 
@@ -23,16 +22,22 @@ const Header = styled.div`
 `
 
 export function ChartBox() {
-    const [year, setYear] = useState(2022);
-
     const charts = [
         {
-            title: '사이트 신규 회원 수',
-            chart: <ReChart year={year} />
+            title: 'GMV',
+            chart: <GmvChart/>
         },
         {
-            title: 'GMV',
-            chart: <ReBarChart year={year} />
+            title: '상품 주문 수',
+            chart: <ProdOrderChart/>
+        },
+        {
+            title: '사이트 방문자 수',
+            chart: <PageViewChart/>
+        },
+        {
+            title: '사이트 신규 회원 수',
+            chart: <NewMemberChart/>
         },
     ];
 
@@ -41,7 +46,6 @@ export function ChartBox() {
             <Box key={idx}>
                 <Header>
                     <h3 style={{ color: '#333333', margin: 0 }}>{ item.title }</h3>
-                    <Filter onChange={(e) => setYear(e.currentTarget.value)}/>
                 </Header>
                 { item.chart }
             </Box>
