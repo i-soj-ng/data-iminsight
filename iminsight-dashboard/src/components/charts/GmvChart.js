@@ -19,7 +19,7 @@ export default function GmvChart() {
     const { siteCode } = context;
 
     const getData = async () => {
-        const response = await axios.get("/get-site-gmv-data", {
+        const response = await axios.get("/api/get-site-gmv-data", {
             params: {
                 site_code: siteCode,
             }

@@ -19,7 +19,7 @@ export default function Rechart(props) {
     const [chartData, setChartData] = useState([]);
 
     useEffect(() => {
-        axios.get("/get-site-data", {
+        axios.get("/api/get-site-data", {
             params: {
                 site_code: 'S201706275951b78686e29'
             }

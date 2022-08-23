@@ -19,7 +19,7 @@ export default function ProdOrderChart() {
     const { siteCode } = context;
 
     const getData = async () => {
-        const response = await axios.get("/get-site-order-prod-data", {
+        const response = await axios.get("/api/get-site-order-prod-data", {
             params: {
                 site_code: siteCode,
             }
