@@ -10,14 +10,16 @@ const ItemBox = styled.div`
   padding: 30px;
   margin: 40px 25px 25px 25px;
   width: 84%;
-  height: 80%;
+  height: 1040px;
 `
 
 export function ChurnBox() {
     return (
         <ItemBox>
             <h2>상위 이탈 위험 고객</h2>
-            <ChurnItem/>
+            <div style={{ width: '100%', alignItems: 'center' }}>
+                <ChurnItem/>
+            </div>
         </ItemBox>
     );
 }
