@@ -17,24 +17,7 @@ const Item = styled.td`
   text-align: center;
 `
 
-export function ChurnItem() {
-    const [churnData, setChurnData] = useState([]);
-
-    useEffect(() => {
-        const getData = async () => {
-            await axios
-                .get("/get-churn-data")
-                .then(function (response) {
-                    console.log(response.data);
-                    setChurnData(response.data);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                })
-        }
-        getData();
-    }, []);
-
+export function ChurnItem(props) {
     return (
         <table style={{ margin: '0 auto', width: '85%', borderCollapse: 'collapse'  }}>
             <tr style={{ height: '40px', borderBottom: '1.5px solid #B3B3B9' }}>
@@ -46,7 +29,7 @@ export function ChurnItem() {
                 <th>gmv</th>
                 <th>score</th>
             </tr>
-            {churnData.map((item, idx) =>
+            {props.churnData.map((item, idx) =>
                 <ItemRow key={idx}>
                     <Item>{ idx + 1 }</Item>
                     <Item>{ item.domain_name }</Item>

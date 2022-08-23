@@ -1,9 +1,11 @@
+import React, { useEffect, useState } from 'react';
 import { SideBar } from './components/SideBar';
 import styled from "styled-components";
 import { Churn, Report } from "./pages";
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import { useResponsive } from "./hooks/useResponsive";
 import { DataStore } from "./store/DataStore";
+import axios from "axios";
 
 const Body = styled.div`
   display: flex;
@@ -18,7 +20,23 @@ const Contents = styled.div`
 `
 
 function App() {
+    const [churnData, setChurnData] = useState([]);
     const isHideSideBar = useResponsive();
+
+    useEffect(() => {
+        const getData = async () => {
+            await axios
+                .get("/get-churn-data")
+                .then(function (response) {
+                    console.log(response.data);
+                    setChurnData(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+        }
+        getData();
+    }, []);
 
     return (
         <DataStore>
@@ -27,7 +45,7 @@ function App() {
                     <SideBar/>
                     <Contents isHideSideBar={isHideSideBar}>
                         <Routes>
-                            <Route path="/" element={<Churn/>}/>
+                            <Route path="/" element={<Churn churnData={churnData}/>}/>
                             <Route path="/report" element={<Report/>}/>
                         </Routes>
                     </Contents>

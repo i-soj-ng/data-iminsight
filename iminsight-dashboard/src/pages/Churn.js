@@ -12,10 +12,10 @@ const Box = styled.div`
   justify-content: center;
 `
 
-export default function Churn() {
+export default function Churn(props) {
     return (
         <Box>
-            <ChurnBox/>
+            <ChurnBox churnData={props.churnData}/>
         </Box>
     );
 }

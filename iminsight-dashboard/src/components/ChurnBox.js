@@ -13,12 +13,12 @@ const ItemBox = styled.div`
   height: 1040px;
 `
 
-export function ChurnBox() {
+export function ChurnBox(props) {
     return (
         <ItemBox>
             <h2>상위 이탈 위험 고객</h2>
             <div style={{ width: '100%', alignItems: 'center' }}>
-                <ChurnItem/>
+                <ChurnItem churnData={props.churnData}/>
             </div>
         </ItemBox>
     );
