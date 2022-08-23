@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { DataContext } from "../../store/DataStore";
 import {
     BarChart,
     Bar,
@@ -14,10 +15,13 @@ import axios from "axios";
 export default function ProdOrderChart() {
     const [chartData, setChartData] = useState([]);
 
+    const context = useContext(DataContext);
+    const { siteCode } = context;
+
     const getData = async () => {
         const response = await axios.get("/get-site-order-prod-data", {
             params: {
-                site_code: 'S201807025b39df3757642',
+                site_code: siteCode,
             }
         });
         setChartData(response.data);

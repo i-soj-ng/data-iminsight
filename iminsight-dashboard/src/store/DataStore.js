@@ -1,8 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
 
-import { SiteDataApi } from "../apis/SiteDataApi";
-import { ChurnDataApi } from "../apis/ChurnDataApi";
-
 export const DataContext = createContext();
 
 export function DataStore(props) {
@@ -13,6 +10,8 @@ export function DataStore(props) {
         <DataContext.Provider value={{
             siteData,
             setSiteData,
+            siteCode,
+            setSiteCode,
         }}>
             { props.children }
         </DataContext.Provider>

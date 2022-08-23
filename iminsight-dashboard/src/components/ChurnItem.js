@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import styled from "styled-components";
+import { DataContext } from "../store/DataStore";
 
 const ItemRow = styled.tr`
   height: 45px;
@@ -18,6 +20,17 @@ const Item = styled.td`
 `
 
 export function ChurnItem(props) {
+    const navigate = useNavigate();
+
+    const context = useContext(DataContext);
+    const { setSiteCode } = context;
+
+    const onClick = (site_code) => {
+        console.log(site_code);
+        setSiteCode(site_code);
+        navigate('/report');
+    };
+
     return (
         <table style={{ margin: '0 auto', width: '85%', borderCollapse: 'collapse'  }}>
             <tr style={{ height: '40px', borderBottom: '1.5px solid #B3B3B9' }}>
@@ -30,7 +43,7 @@ export function ChurnItem(props) {
                 <th>score</th>
             </tr>
             {props.churnData.map((item, idx) =>
-                <ItemRow key={idx}>
+                <ItemRow key={idx} onClick={() => onClick(item.site_code)}>
                     <Item>{ idx + 1 }</Item>
                     <Item>{ item.domain_name }</Item>
                     <Item>{ item.version }</Item>
