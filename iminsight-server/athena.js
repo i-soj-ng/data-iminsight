@@ -22,7 +22,8 @@ function makeQuery(sql) {
         let params = {
             QueryString: sql,
             ResultConfiguration: { OutputLocation: ATHENA_OUTPUT_LOCATION },
-            QueryExecutionContext: { Database: ATHENA_DB }
+            QueryExecutionContext: { Database: ATHENA_DB },
+            WorkGroup: "imweb-test-datalake-work"
         }
 
         /* Make API call to start the query execution */
