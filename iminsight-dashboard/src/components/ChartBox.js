@@ -12,7 +12,7 @@ const Box = styled.div`
   margin: 30px 30px 0 0;
   min-width: 400px;
   width: 42%;
-  height: 500px;
+  height: 460px;
 `
 
 const Header = styled.div`
