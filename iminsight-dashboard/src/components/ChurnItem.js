@@ -23,16 +23,17 @@ export function ChurnItem(props) {
     const navigate = useNavigate();
 
     const context = useContext(DataContext);
-    const { setSiteCode } = context;
+    const { setSiteCode, setCurrentPath, setDomainName } = context;
 
-    const onClick = (site_code) => {
-        console.log(site_code);
+    const onClick = (site_code, domain_name) => {
         setSiteCode(site_code);
+        setDomainName(domain_name);
         navigate('/report');
+        setCurrentPath('/report');
     };
 
     return (
-        <table style={{ margin: '0 auto', width: '85%', borderCollapse: 'collapse'  }}>
+        <table style={{ margin: '0 auto', width: '85%', borderCollapse: 'collapse' }}>
             <tr style={{ height: '40px', borderBottom: '1.5px solid #B3B3B9' }}>
                 <th>idx</th>
                 <th>domain_name</th>
@@ -43,7 +44,7 @@ export function ChurnItem(props) {
                 <th>score</th>
             </tr>
             {props.churnData.map((item, idx) =>
-                <ItemRow key={idx} onClick={() => onClick(item.site_code)}>
+                <ItemRow key={idx} onClick={() => onClick(item.site_code, item.domain_name)}>
                     <Item>{ idx + 1 }</Item>
                     <Item>{ item.domain_name }</Item>
                     <Item>{ item.version }</Item>

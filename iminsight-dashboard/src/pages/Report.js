@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { SelectSite } from "../components/SelectSite";
 import { ChartBox } from "../components/ChartBox";
 import styled from "styled-components";
+import {DataContext} from "../store/DataStore";
 
 const Box = styled.div`
   width: 100%;
@@ -11,10 +12,7 @@ const Box = styled.div`
 export default function Report() {
     return (
         <Box>
-            <SelectSite/>
-            <div style={{ display: 'flex', flexFlow: 'row wrap' }}>
-                <ChartBox/>
-            </div>
+            <ChartBox/>
         </Box>
     );
 }

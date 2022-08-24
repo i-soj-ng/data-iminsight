@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { AiFillSignal, AiFillFrown, AiOutlineTeam } from "react-icons/ai";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
+import { DataContext } from "../store/DataStore";
 
 const menuData = [
     {
@@ -34,11 +35,16 @@ const Menu = styled.button`
 `
 
 export function MenuItem() {
-    const [currentPath, setCurrentPath] = useState(window.location.pathname);
+    const context = useContext(DataContext);
+    const { currentPath, setCurrentPath } = context;
 
     const menuClicked = (e) => {
         setCurrentPath(e.currentTarget.value);
     }
+
+    useEffect(() => {
+        setCurrentPath(window.location.pathname);
+    }, [currentPath]);
 
     return (
         menuData.map((item, idx) =>
@@ -47,7 +53,7 @@ export function MenuItem() {
                     key={idx}
                     value={item.path}
                     onClick={menuClicked}
-                    isActive={item.path === currentPath}
+                    isActive={currentPath === item.path}
                 >
                     { item.icon }
                     <span style={{ margin: '16px 0 16px 0'}}>{ item.title }</span>

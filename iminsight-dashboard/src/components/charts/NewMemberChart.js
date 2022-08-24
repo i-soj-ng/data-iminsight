@@ -34,19 +34,19 @@ export default function NewMemberChart() {
     return (
         <ResponsiveContainer width="100%" height="100%">
             <BarChart
-                width={500}
+                width={600}
                 height={300}
                 data={chartData}
                 margin={{
-                    top: 5,
-                    right: 30,
+                    top: 50,
+                    right: 50,
                     left: 20,
                     bottom: 50
                 }}
             >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="mm" />
-                <YAxis />
+                <XAxis dataKey="mm" label={{ value: '월', offset: 20, position: 'right'}}/>
+                <YAxis label={{ value: '명', offset: 20, position: 'top'}} domain={[0, dataMax => (40)]}/>
                 <Tooltip />
                 <Legend />
                 <Bar dataKey="cnt" fill="#8884d8" />

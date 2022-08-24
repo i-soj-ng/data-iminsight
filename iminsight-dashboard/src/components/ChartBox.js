@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styled from "styled-components";
 
 import { GmvChart, ProdOrderChart, NewMemberChart, PageViewChart } from "./charts";
+import {DataContext} from "../store/DataStore";
 
 const Box = styled.div`
   background-color: #FFFFFF;
@@ -11,7 +12,7 @@ const Box = styled.div`
   margin: 30px 30px 0 0;
   min-width: 400px;
   width: 42%;
-  height: 450px;
+  height: 500px;
 `
 
 const Header = styled.div`
@@ -22,6 +23,9 @@ const Header = styled.div`
 `
 
 export function ChartBox() {
+    const context = useContext(DataContext);
+    const { domainName } = context;
+
     const charts = [
         {
             title: 'GMV',
@@ -42,13 +46,18 @@ export function ChartBox() {
     ];
 
     return (
-        charts.map((item, idx) =>
-            <Box key={idx}>
-                <Header>
-                    <h3 style={{ color: '#333333', margin: 0 }}>{ item.title }</h3>
-                </Header>
-                { item.chart }
-            </Box>
-        )
+        <div>
+            <h2 style={{ margin: '0' }}>{domainName}</h2>
+            <div style={{ display: 'flex', flexFlow: 'row wrap' }}>
+                {charts.map((item, idx) =>
+                    <Box key={idx}>
+                        <Header>
+                            <h3 style={{ color: '#333333', margin: 0 }}>{ item.title }</h3>
+                        </Header>
+                        { item.chart }
+                    </Box>
+                )}
+            </div>
+        </div>
     );
 }
